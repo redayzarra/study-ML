@@ -5,7 +5,7 @@ from numpy.typing import NDArray
 # Define x_train which is the input feature
 x_train = np.array([1.0, 2.0])
 
-# Define y_train which is the output feature (target)
+# Define y_train which is the output (target)
 y_train = np.array([300.0, 500.0])
 
 print(f"x_train = {x_train}")
