@@ -1,5 +1,5 @@
 import numpy as np
-%matplotlib widget
+from numpy.typing import NDArray
 import matplotlib.pyplot as plt
 
 # Define x_train which is the input feature
