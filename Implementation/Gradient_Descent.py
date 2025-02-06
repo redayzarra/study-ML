@@ -44,16 +44,26 @@ def compute_gradient(x, y, w, b):
     
     # Number of training examples
     m = x.shape[0]    
+    
+    # Setting up the derivaties of w and b
     dj_dw = 0
     dj_db = 0
     
-    for index in range(m):  
+    for index in range(m):
+        # Linear regression model
         f_wb = w * x[index] + b 
+        
+        # Find the derivate of the cost function J(w, b) for the current index
         dj_dw_i = (f_wb - y[index]) * x[index] 
         dj_db_i = f_wb - y[index] 
+        
+        # Add the current derivative to the total 
         dj_db += dj_db_i
-        dj_dw += dj_dw_i 
+        dj_dw += dj_dw_i
+        
+    # Divide the total by the number of training examples 
     dj_dw /= m 
     dj_db /= m 
         
     return dj_dw, dj_db
+
