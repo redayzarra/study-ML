@@ -136,3 +136,7 @@ ax1.set_ylabel('Cost')            ;  ax2.set_ylabel('Cost')
 ax1.set_xlabel('iteration step')  ;  ax2.set_xlabel('iteration step') 
 plt.show()
 
+# Print predictions
+print(f"1000 sqft house prediction {w_final*1.0 + b_final:0.1f} Thousand dollars")
+print(f"1200 sqft house prediction {w_final*1.2 + b_final:0.1f} Thousand dollars")
+print(f"2000 sqft house prediction {w_final*2.0 + b_final:0.1f} Thousand dollars")
