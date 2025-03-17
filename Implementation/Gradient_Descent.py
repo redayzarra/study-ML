@@ -32,14 +32,15 @@ def compute_cost(x: NDArray[np.float64], y: NDArray[np.float64], w: float, b: fl
 # Define a function to compute the gradient
 def compute_gradient(x, y, w, b): 
     """
-    Computes the gradient for linear regression 
-    Args:
-      x (ndarray (m,)): Data, m examples 
-      y (ndarray (m,)): target values
-      w,b (scalar)    : model parameters  
-    Returns
-      dj_dw (scalar): The gradient of the cost w.r.t. the parameters w
-      dj_db (scalar): The gradient of the cost w.r.t. the parameter b     
+    ### Computes the gradient for linear regression 
+
+    #### Args:
+        x (ndarray (m,)): Data, m examples 
+        y (ndarray (m,)): target values
+        w,b (scalar)    : model parameters  
+    #### Returns:
+        dj_dw (scalar): The gradient of the cost w.r.t. the parameters w
+        dj_db (scalar): The gradient of the cost w.r.t. the parameter b     
      """
     
     # Number of training examples
@@ -73,19 +74,19 @@ def gradient_descent(x, y, w_in, b_in, alpha, num_iters):
     num_iters gradient steps with learning rate alpha
     
     Args:
-      x (ndarray (m,))  : Data, m examples 
-      y (ndarray (m,))  : target values
-      w_in,b_in (scalar): initial values of model parameters  
-      alpha (float):     Learning rate
-      num_iters (int):   number of iterations to run gradient descent
-      compute_cost:     function to call to produce cost
-      compute_gradient: function to call to produce gradient
+        x (ndarray (m,))  : Data, m examples 
+        y (ndarray (m,))  : target values
+        w_in,b_in (scalar): initial values of model parameters  
+        alpha (float):     Learning rate
+        num_iters (int):   number of iterations to run gradient descent
+        compute_cost:     function to call to produce cost
+        compute_gradient: function to call to produce gradient
       
     Returns:
-      w (scalar): Updated value of parameter after running gradient descent
-      b (scalar): Updated value of parameter after running gradient descent
-      J_history (List): History of cost values
-      p_history (list): History of parameters [w,b] 
+        w (scalar): Updated value of parameter after running gradient descent
+        b (scalar): Updated value of parameter after running gradient descent
+        J_history (List): History of cost values
+        p_history (list): History of parameters [w,b] 
       """
     
     # An array to store cost J and w's at each iteration primarily for graphing later
