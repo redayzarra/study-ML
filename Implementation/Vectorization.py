@@ -52,3 +52,26 @@ c = a[:3];        print("a[:3]    = ", c)
 # Access all elements
 c = a[:];         print("a[:]     = ", c)
 
+# Vectorized operations on 1-D vectors
+a = np.array([1,2,3,4])
+print(f"a             : {a}")
+
+# Negate elements of a
+b = -a 
+print(f"b = -a        : {b}")
+
+# Sum all elements of a, returns a scalar
+b = np.sum(a) 
+print(f"b = np.sum(a) : {b}")
+
+# Mean of all elements of a, returns a scalar
+b = np.mean(a)
+print(f"b = np.mean(a): {b}")
+
+# Square each element of a
+b = a**2
+print(f"b = a**2      : {b}")
+
+# Square root each element of a
+b = np.sqrt(a)
+print(f"b = np.sqrt(a): {b}")
