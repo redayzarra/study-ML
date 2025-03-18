@@ -75,3 +75,27 @@ print(f"b = a**2      : {b}")
 # Square root each element of a
 b = np.sqrt(a)
 print(f"b = np.sqrt(a): {b}")
+
+# Binary operators work element wise
+a = np.array([ 1, 2, 3, 4])
+b = np.array([-1,-2, 3, 4])
+print(f"Binary operators work element wise: {a + b}")
+
+# Try a mismatched vector operation
+c = np.array([1, 2])
+try:
+    d = a + c
+except Exception as e:
+    print("The error message you'll see is:")
+    print(e)
+    
+# Vectorized operations on 2-D vectors  
+a = np.array([1, 2, 3, 4])
+
+# Multiply a by a scalar 
+b = 5 * a 
+print(f"b = 5 * a : {b}")
+
+# Multiply a by a vector
+b = a * a 
+print(f"b = a * a : {b}")
