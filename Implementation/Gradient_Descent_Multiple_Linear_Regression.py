@@ -50,3 +50,84 @@ print(f"x_vec shape {x_vec.shape}, x_vec value: {x_vec}")
 f_wb = predict_single_loop(x_vec, w_init, b_init)
 print(f"f_wb shape {f_wb.shape}, prediction: {f_wb}")
 
+# Predict using vectorization
+def predict(x, w, b): 
+    """
+    single predict using linear regression
+    Args:
+      x (ndarray): Shape (n,) example with multiple features
+      w (ndarray): Shape (n,) model parameters   
+      b (scalar):             model parameter 
+      
+    Returns:
+      p (scalar):  prediction
+    """
+    p = np.dot(x, w) + b     
+    return p    
+
+# Get a row from our training data
+x_vec = X_train[0,:]
+print(f"x_vec shape {x_vec.shape}, x_vec value: {x_vec}")
+
+# Make a prediction
+f_wb = predict(x_vec,w_init, b_init)
+print(f"f_wb shape {f_wb.shape}, prediction: {f_wb}")
+
+# Compute cost with multiple examples
+def compute_cost(X, y, w, b): 
+    """
+    compute cost
+    Args:
+      X (ndarray (m,n)): Data, m examples with n features
+      y (ndarray (m,)) : target values
+      w (ndarray (n,)) : model parameters  
+      b (scalar)       : model parameter
+      
+    Returns:
+      cost (scalar): cost
+    """
+    m = X.shape[0]
+    cost = 0.0
+    for i in range(m):                                
+        f_wb_i = np.dot(X[i], w) + b           #(n,)(n,) = scalar (see np.dot)
+        cost = cost + (f_wb_i - y[i])**2       #scalar
+    cost = cost / (2 * m)                      #scalar    
+    return cost
+
+# Compute and display cost using our pre-chosen optimal parameters 
+cost = compute_cost(X_train, y_train, w_init, b_init)
+print(f'Cost at optimal w : {cost}')
+
+# Compute the gradient
+def compute_gradient(X, y, w, b): 
+    """
+    Computes the gradient for linear regression 
+    Args:
+      X (ndarray (m,n)): Data, m examples with n features
+      y (ndarray (m,)) : target values
+      w (ndarray (n,)) : model parameters  
+      b (scalar)       : model parameter
+      
+    Returns:
+      dj_dw (ndarray (n,)): The gradient of the cost w.r.t. the parameters w. 
+      dj_db (scalar):       The gradient of the cost w.r.t. the parameter b. 
+    """
+    m,n = X.shape           #(number of examples, number of features)
+    dj_dw = np.zeros((n,))
+    dj_db = 0.
+
+    for i in range(m):                             
+        err = (np.dot(X[i], w) + b) - y[i]   
+        for j in range(n):                         
+            dj_dw[j] = dj_dw[j] + err * X[i, j]    
+        dj_db = dj_db + err                        
+    dj_dw = dj_dw / m                                
+    dj_db = dj_db / m                                
+        
+    return dj_db, dj_dw
+
+# Compute and display gradient 
+tmp_dj_db, tmp_dj_dw = compute_gradient(X_train, y_train, w_init, b_init)
+print(f'dj_db at initial w,b: {tmp_dj_db}')
+print(f'dj_dw at initial w,b: \n {tmp_dj_dw}')
+
