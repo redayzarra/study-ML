@@ -15,8 +15,20 @@ plt.ylabel("y")
 plt.legend()
 plt.show()
 
-# Create polynomial features
-X_poly = np.concatenate([X**i for i in range(3)], axis=1)
+# Create target data
+x = np.arange(0, 20, 1)
+y = 1 + x**2
 
-# Plot the polynomial fit
+# Engineer features 
+X = x**2      #<-- added engineered feature
+
+X = X.reshape(-1, 1)  #X should be a 2-D Matrix
+
+# Plot the data points
+plt.scatter(x, y, marker='x', c='r', label="Actual Value")
+plt.title("Added x**2 feature")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
+plt.show()
 
